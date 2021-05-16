@@ -30,6 +30,12 @@ class ProvinceTest < Minitest::Test
       (asia.shortfall).must_equal -6
       (asia.profit).must_equal 292
     end
+
+    it 'tests zero demand' do
+      asia.demand = 0
+      (asia.shortfall).must_equal -25
+      (asia.profit).must_equal 0
+    end
   end
 
   describe "no producers" do
