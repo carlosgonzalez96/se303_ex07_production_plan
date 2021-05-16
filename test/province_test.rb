@@ -1,6 +1,7 @@
 gem 'minitest', '~> 5.4'
 require 'minitest/autorun'
 require 'minitest/pride'
+require 'rspec/expectations/minitest_integration' #to use the exceptions
 require_relative '../lib/province'
 require_relative '../lib/data'
 
@@ -18,34 +19,34 @@ class ProvinceTest < Minitest::Test
     end
 
     it 'tests province shortfall' do
-      (asia.shortfall).must_equal 5
+      expect(asia.shortfall).to eq(5)
     end
 
     it 'tests profit' do
-      (asia.profit).must_equal 230
+      expect(asia.profit).to eq(230)
     end
 
     it 'tests change production' do
       asia.producers[0].production = 20
-      (asia.shortfall).must_equal -6
-      (asia.profit).must_equal 292
+      expect(asia.shortfall).to eq(-6)
+      expect(asia.profit).to eq(292)
     end
 
     it 'tests zero demand' do
       asia.demand = 0
-      (asia.shortfall).must_equal -25
-      (asia.profit).must_equal 0
+      expect(asia.shortfall).to eq(-25)
+      expect(asia.profit).to eq(0)
     end
 
     it 'tests negative demand' do
       asia.demand = -1
-      (asia.shortfall).must_equal -26
-      (asia.profit).must_equal -10
+      expect(asia.shortfall).to eq(-26)
+      expect(asia.profit).to eq(-10)
     end
 
     it 'tests empty string demand' do
       asia.demand = ""
-      (asia.demand).empty?
+      expect(asia.demand).to eq("")
       #these tests will fail because it will calculate empty strings and that would cause errors
       #(asia.shortfall).to_f.nan?
       # (asia.shortfall).empty?
@@ -66,11 +67,11 @@ class ProvinceTest < Minitest::Test
     end
 
     it 'test shortfall' do
-      (noProducers.shortfall).must_equal 30
+      expect(noProducers.shortfall).to eq(30)
     end
 
     it 'tests profit' do
-      (noProducers.profit).must_equal 0
+      expect(noProducers.profit).to eq(0)
     end
   end
 
@@ -84,7 +85,7 @@ class ProvinceTest < Minitest::Test
   #     }
 
   #     prov = Province.new(data)
-  #     (prov.shortfall).must_equal 0
+  #     expect(prov.shortfall).to eq(0)
   #   end
   # end
 end
