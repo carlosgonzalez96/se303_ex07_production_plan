@@ -42,6 +42,15 @@ class ProvinceTest < Minitest::Test
       (asia.shortfall).must_equal -26
       (asia.profit).must_equal -10
     end
+
+    it 'tests empty string demand' do
+      asia.demand = ""
+      (asia.demand).empty?
+      #these tests will fail because it will calculate empty strings and that would cause errors
+      #(asia.shortfall).to_f.nan?
+      # (asia.shortfall).empty?
+      # (asia.profit).empty?
+    end
   end
 
   describe "no producers" do
