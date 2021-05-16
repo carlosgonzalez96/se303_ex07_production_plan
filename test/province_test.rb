@@ -73,4 +73,18 @@ class ProvinceTest < Minitest::Test
       (noProducers.profit).must_equal 0
     end
   end
+
+  # describe 'String for producers' do
+  #   it 'empty stings' do
+  #     data = {
+  #       name: "String producers",
+  #       producers: "",
+  #       demand: 30,
+  #       price: 20,
+  #     }
+
+  #     prov = Province.new(data)
+  #     (prov.shortfall).must_equal 0
+  #   end
+  # end
 end
