@@ -10,4 +10,11 @@ class ProvinceTest < Minitest::Test
     asia = Province.new(sample_province_data)
     assert_equal(5, asia.shortfall)
   end
+
+  describe "Province method tests" do
+    it 'test province shortfall' do
+      asia = Province.new(sample_province_data)
+      (asia.shortfall).must_equal 5
+    end
+  end
 end
