@@ -17,12 +17,18 @@ class ProvinceTest < Minitest::Test
       asia = Province.new(sample_province_data)
     end
 
-    it 'test province shortfall' do
+    it 'tests province shortfall' do
       (asia.shortfall).must_equal 5
     end
 
     it 'tests profit' do
       (asia.profit).must_equal 230
+    end
+
+    it 'tests change production' do
+      asia.producers[0].production = 20
+      (asia.shortfall).must_equal -6
+      (asia.profit).must_equal 292
     end
   end
 end
