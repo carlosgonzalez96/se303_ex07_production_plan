@@ -12,13 +12,16 @@ class ProvinceTest < Minitest::Test
   end
 
   describe "Province method tests" do
-    it 'test province shortfall' do
+    asia = nil
+    before(:each) do
       asia = Province.new(sample_province_data)
+    end
+
+    it 'test province shortfall' do
       (asia.shortfall).must_equal 5
     end
 
     it 'tests profit' do
-      asia = Province.new(sample_province_data)
       (asia.profit).must_equal 230
     end
   end
