@@ -31,4 +31,25 @@ class ProvinceTest < Minitest::Test
       (asia.profit).must_equal 292
     end
   end
+
+  describe "no producers" do
+    noProducers = nil
+    before(:each) do
+      data = {
+        name: "No Producers",
+        producers: [],
+        demand: 30,
+        price: 20,
+      }
+      noProducers = Province.new(data)
+    end
+
+    it 'test shortfall' do
+      (noProducers.shortfall).must_equal 30
+    end
+
+    it 'tests profit' do
+      (noProducers.profit).must_equal 0
+    end
+  end
 end
